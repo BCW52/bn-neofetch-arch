@@ -1,5 +1,5 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
-pkgname=bn-neofetch-git
+pkgname=bn-neofetch
 _pkgname=neofetch
 pkgver=r5.30778d3
 pkgrel=1
