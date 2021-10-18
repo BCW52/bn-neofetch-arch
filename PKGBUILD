@@ -1,12 +1,12 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=bn-neofetch-git
-_pkgname=bn-neofetch
-pkgver=3.2.0.r47.gc3c6404
+_pkgname=neofetch
+pkgver=r5.30778d3
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 url="https://github.com/BCW52/${_pkgname}"
-license=('MIT')
+license=('GPL')
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('bash')
@@ -25,13 +25,14 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 makedepends=('git')
-source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git")
+source=("$pkgname::git+https://github.com/BCW52/bn-neofetch.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 package() {
   cd $pkgname
